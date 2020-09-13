@@ -60,6 +60,7 @@
 /* АНИМАЦИЯ */
 
 .btn {
+    position: relative;
     display: inline-flex;
     border: none;
     margin: 0;
@@ -68,14 +69,242 @@
     background-color: #008080;
     color: #ffffff;
     cursor: pointer;
+    overflow: hidden;
 
     transition-property: all;
     transition-duration: 250ms;
     transition-timing-function: linear;
 }
 
+.btn::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    background-color: black;
+
+    transition: transform 200ms linear;
+
+}
+
+.btn:hover::before {
+    transform: translateY(-30px);
+}
+
+.btn::after {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(calc(-50% + 30px));
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: yellow;
+
+    transition: transform 200ms linear;
+
+}
+
+.btn:hover::after {
+    transform: translateY(-50%);
+}
+
+
 .btn:hover,
 .btn:focus {
     background-color: aqua;
     color: black;
 }
+
+/* Аналогичный пример, но со стороны ::after */
+.btn-reverse {
+    position: relative;
+    display: inline-flex;
+    border: none;
+    margin: 0;
+    padding: 10px 30px;
+    border-radius: 3px;
+    background-color: #008080;
+    color: #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: linear;
+}
+
+.btn-reverse::before {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(calc(-50% + 30px));
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: black;
+
+    transition: transform 200ms linear;
+
+}
+
+.btn-reverse:hover::before {
+    transform: translateY(-50%);
+}
+
+.btn-reverse::after {
+    
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+    background-color: yellow;
+
+    transition: transform 200ms linear;
+
+}
+
+.btn-reverse:hover::after {
+    transform: translateY(-30px);
+}
+
+
+.btn-reverse:hover,
+.btn-reverse:focus {
+    background-color: aqua;
+    color: black;
+}
+
+/* Подчеркинвание ссылки */
+
+.menu1 {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: flex;
+}
+
+.menu-item1:not(:last-child) {
+    margin-right: 10px;
+}
+
+.menu-link1 {
+    position: relative;
+    outline: 1px solid black;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.menu-link1::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    transform: scaleX(0);
+    display: block;
+    width: 100%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: darkblue;
+    opacity: 1;
+    transition: transform 200ms linear;
+}
+
+.menu-link1:hover::after {
+    /* opacity: 1; */
+    transform: scaleX(1);
+}
+
+
+/* ОВЕРЛЕЙ */
+
+.works {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin: 0;
+    list-style: none;
+}
+
+.worklist {
+    position: relative;
+    /* width: 370px; */
+    width: calc((100% - 30px * 2) / 3);
+    margin: 15px;
+    outline: 1px solid var(--border-color)
+    text-decoration: none;
+    box-shadow: none;
+    transition: box-shadow 200ms linear; 
+    /* margin-right: 30px; */
+}
+.product-img {
+    position: relative;
+}
+
+.product-img::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    content: "";
+    background: rgba(33, 150, 243, 0.9);
+    transform: translateY(100%);
+}
+
+.worklist:hover .product-img::before {
+    transform: translateY(0%);
+}
+
+.product-text {
+    position: absolute;
+    top: 63px;
+    left: 24px;
+    right: 24px;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 156% */
+
+    letter-spacing: 0.03em;
+
+    color: #FFFFFF;
+}
+
+.work-item {
+    padding: 20px 24px;
+    }
+    
+    .worklist-title {
+        font-weight: 700;
+        font-size: 18px;
+        /* identical to box height, or 200% */
+        letter-spacing: 0.06em;
+        color: var(--heading-color);
+        margin-bottom: 24px;
+        margin-top: 0;
+    }
+    .worklist-text {
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.03em;
+        color: var(--text-color);
+        /* margin: 4px 0px 20px 24px; */
+    }
+
+    /* Формы */
+    .form-elements {
+        width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .note {
+        background-color: darkgray;
+    }
+
