@@ -378,4 +378,194 @@
             Здесь пользователь увидит список районов с их кодами, а при выборе опции, текстовое поле будет заполнено только кодом отделения.
         </p>
 
+    <h2>Примеры с вебинара с Репетой</h2>
+
+    <p>При создании тега form внутри него автоматически появляется атрибут action.
+        Он нужен для того, чтобы отправлять файл с формой, в котором будут с помощью PHP собраны нужные данные с формы. 
+        Нам в данном случае он не нужен т.к. мы отправляем форму через JavaScript.
+    </p>
+    <p>
+        Форма это логический (Семантический) контейнер для группировки различных элементов с какой-то одной целью. 
+        Например фильтры слева на странице интернет-магазина - это тоже форма. 
+    </p>
+    <p>
+        Тег input это универсальное поле для ввода данных. Его атрибут name подскажет серверу категорию информации из этого поля. 
+        Т.е. если в поле должна вписаться фамилия, то атрибуту name надо задать значение типа surname. 
+        <br> А для того чтобы при клике на имя поля, в нём появлялся курсор, надо перед input вставить имя поля в тег label. 
+        В теге label указать атрибут for="id нужного поля", а полю соответственно задать id. <br>
+        Можно вложить input прямо в label, тогда связывание произойдет автоматически и будет НЕ НУЖЕН атрибут for. 
+        <br> 
+        НО! При выполнении сложных эффектов (типа переходов) input обычно НЕ ВКЛАДЫВАЕТСЯ внутрь label, для удобства работы с тегом. 
+        <br>
+        Для отправки формы создается тег button с атрибутом type="submit". 
+        <br>
+        <p>
+            При создании input type="checkbox" внутри тега надо обязательно указывать атрибут value, который обозначает значение данного чекбокса. 
+            <br> Если есть группа чекбоксов, из которых можно выбрать сразу несколько, то атрибут name у них должен быть одинковый. Чтобы сервер получал их значения в одной категории и смотрел на это как на группу данных, а не просто разные данные. 
+            <br> Чтобы все чекбоксы обернуть в семантический тег, надо обернуть их в тег fieldset. Только на него не работают флексбоксы. 
+            Поэтому вместо fieldset используется div. <br>
+            А чтобы посысить семантику этого div к нему применяется атрибут role. 
+            ROLE ИСПОЛЬЗУЕТСЯ ТОЛЬКО ДЛЯ ПОВЫШЕНИЯ СЕМАНТИЧНОСТИ, ДЛЯ НЕ СЕМАНТИЧЕСКОЙ РАЗМЕТКИ. Не надо пихать его везде где попало. 
+            В случае с группой чекбоксов role="group". Логично. <br>
+            Для радио-кнопок (это когда можно выбрать только один из предложенных вариантов) тоже обязательно надо задавать атрибут value. 
+            Для них нужно обязательно указывать одинаковый name. Иначе можно будет выбрать несколько позиций. 
+            <br> Атрибут checked. Если его поставить внутрь тега с чекбоксом или радио-кнопкой, то при загрузке страницы данное значение будет автоматически отражено. 
+            <br> Для группировки радио-кнопок также используется div role="group". 
+            <br> Для ввода данных о дате и времени для input используются атрибуты:
+            <ul>
+                <li>date - ввод даты</li>
+                <li>time - ввод времени</li>
+                <li>datetime-local - ввод даты и времени</li>
+            </ul>
+            Чтобы ограничить поле выбора определёнными датами и временем надо прописать атрибуты min и max типа min="2020-01-01T00:00" и max="2020-12-31T23:59"<br>
+            Но все эти атрибуты очень плохо стилизируются и даже иногда не поддерживаются. 
+            <br> В таком случае их просто заменяют на плагины из готовых кастомных библиотек. 
+            <br> Для загрузки и отправки файлов через форму для input есть атрибут file. 
+            Но для того чтобы отправка файла заработала нужно ещё куча JS. Это только оформление. 
+            <br> Опять же, сейчас вместо этого используются библиотеки. 
+            <br> Для того чтобы можно было оставить комментарий используется тег textarea. <br>
+            С ним есть нюанс: по умолчанию пользователь может всячески растягивать это окно и поломать вам всю разметку. 
+            <b> Поэтому через CSS обязательно прописывается свойство textarea { resize:none }. </b>
+            <br> У него есть свойства cols и rows. Cols обычно удаляется и задается через CSS.  
+            <br> 
+        </p>
+
+    </p>
+    <p>
+        Можно сделать так, чтобы при загрузке страницы с формой курсор автоматически появлялся в каком-то из полей. Например в первом. 
+        <br> Для этого есть атрибут autofocus. Его можно поставить на любое поле. 
+        <br>
+        Существует атрибут autocomplete. Он нужен для того, чтобы форма предлагала варианты для заполнения полей. <br>
+        Например если автозаполнение не нужно, то в тег form надо указать autocomplete="off". 
+        После чего его можно отдельно включить на каком-либо из input с помощью autocomplete="on". <br>
+
+        <br> 
+        <b>Атрибут placeholder</b> нужен для того, чтобы вставлять в поле полупрозрачную подсказку у том, как его заполнять. 
+            Например в поле с именем сделать подсказку "Иван Иваныч". 
+        <br> Лучше не вкладывать значение label в placeholder. Лучше label оставлять отдельно, чтобы его было видно всегда. 
+        <br> В placeholder вписывается именно формат ввода, а не значение. 
+
+    </p>
+    <p>
+        Пример формы регистрации спискера.
+    </p>
+    <form>
+        <label for="name">Имя</label>
+        <input type="text" name="user-name" id="name" placeholder="Семён Семёныч">
+        <br>
+        <label for="tel">№ телефона</label>
+        <input type="tel" name="tel" id="tel" placeholder="+7-000-000-00-00">
+        <br>
+        <label for="mail">Электронная почта</label>
+        <input type="email" name="mail" id="mail" placeholder="my@mail.com">
+         <br>
+         <div role="group">  
+            <input type="checkbox" name="topic" value="html" id="html" checked>
+            <label for="html">HTML</label>
+            <input type="checkbox" name="topic" value="js" id="js">
+            <label for="js">JavaScript</label>
+            <input type="checkbox" name="topic" value="css" id="css">
+            <label for="css">CSS</label>
+        </div>
+        <div role="group">
+            <input type="radio" name="experience" value="junior" id="junior" checked>
+            <label for="junior">Junior</label>
+            <input type="radio" name="experience" value="middle" id="middle">
+            <label for="middle">Middle</label>
+            <input type="radio" name="experience" value="senior" id="senior">
+            <label for="senior">Senior</label>
+        </div>
+        <label for="date">Дата и время</label>
+        <input type="datetime-local" name="date" id="date">
+        <br>
+        <label for="pdf">Загрузите доклад в PDF</label>
+        <input type="file" name="" id="pdf">
+        <br>
+        <label for="comment">Оставьте комментарий</label>
+        <textarea name="comment" id="comment" rows="7" placeholder="Мой комментарий..."></textarea>
+        <br>
+        <input type="checkbox" name="" id="policy">
+        <label for="policy">Согласен на всё</label>
+        <br>
+        <button type="submit">Оставить заявку</button>
+    </form>
+    <p>
+        <h3>Оформление формы</h3>
+    </p>
+    <p>
+        Для оформления формы каждая пара label и input оборачивается например тегом p. 
+        <br> Также для этого можно использовать ul списки. <br>
+        Но мы будем использовать div. 
+
+    </p>
+
+
+    <form class="form js-speaker-form">
+        <div class="form-field">
+            <label for="name" class="form-label">Имя</label>
+            <input class="form-input" type="text" name="user-name" id="name" placeholder="Семён Семёныч">
+        </div>
+        
+        <div class="form-field">
+            <label for="tel" class="form-label">№ телефона</label>
+        <input class="form-input" type="tel" name="tel" id="tel" placeholder="+7-000-000-00-00">
+        </div>
+        
+        <div class="form-field">
+            <label for="mail">Электронная почта</label>
+        <input type="email" name="mail" id="mail" placeholder="my@mail.com">
+        </div>
+        
+         <div role="group">  
+            <input type="checkbox" name="topic" value="html" id="html" checked>
+            <label for="html">HTML</label>
+            <input type="checkbox" name="topic" value="js" id="js">
+            <label for="js">JavaScript</label>
+            <input type="checkbox" name="topic" value="css" id="css">
+            <label for="css">CSS</label>
+        </div>
+        <div role="group">
+            <input type="radio" name="experience" value="junior" id="junior" checked>
+            <label for="junior">Junior</label>
+            <input type="radio" name="experience" value="middle" id="middle">
+            <label for="middle">Middle</label>
+            <input type="radio" name="experience" value="senior" id="senior">
+            <label for="senior">Senior</label>
+        </div>
+        <label for="date">Дата и время</label>
+        <input type="datetime-local" name="date" id="date">
+        <br>
+        <label for="pdf">Загрузите доклад в PDF</label>
+        <input type="file" name="" id="pdf">
+        <br>
+        <label for="comment">Оставьте комментарий</label>
+        <textarea name="comment" id="comment" rows="7" placeholder="Мой комментарий..."></textarea>
+        <br>
+        <input type="checkbox" name="" id="policy">
+        <label for="policy">Согласен на всё</label>
+        <br>
+        <button type="submit">Оставить заявку</button>
+    </form>
+    <!-- <form>
+        <label>
+            Имя
+            <input type="text" name="user-name">
+        </label>
+    </form> -->
+
+
+    <!-- <script>
+        (() => {
+            document
+            .querySelector(' .js-speaker-form')
+            .addEventListere('submit', e => {
+                e.preventDefault();
+
+                new FormData(e.currentTarget).forEach((value, name) =>
+                 console.log(`${name}: ${value}`),
+                );
+
+            }
+        }
+    </script> -->
 </body>
