@@ -328,3 +328,80 @@
     textarea {
         resize: none;
     }
+
+    .form {
+        width: 600px;
+        outline: 1px solid grey;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .form-field label {
+        margin-bottom: 5px;
+    }
+
+    .form-field input {
+        margin: 0;
+        padding: 5px 8px;
+        border-radius: 3px;
+        border: 1px solid grey;
+        text-align: center;
+    }
+
+    .form-field input::placeholder {
+        color: pink
+    }
+
+    .form-field .comment {
+        padding: 10px;
+    }
+
+    .form .date {
+        border-color: tomato;
+        border-width: 4px;
+        border-radius: 6px;
+        padding: 20px 30px;
+    }
+
+    /* .form-field input[type="checkbox"] {
+        align-items: center;
+    } */
+
+    .group-title {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .group {
+        margin-bottom: 15px;
+    }
+
+    .topic-options {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .topic-options input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+    }
+
+    .topic-options label {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .topic-options li {
+        display: flex;
+        align-items: center;
+    }
+    
+   

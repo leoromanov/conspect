@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы</title>
+    <link rel="stylesheet" href="./css/style_lesson12.css">
+</head>
+<body class="body-container">
+<h1>Занятие 12</h1>
+
+<h2>Псевдоклассы состояния</h2>
+
+<p>
+    Существует набор псевдоклассов, созданных специально для элементов форм, и не оказывающих никакого эффекта на другие типы элементов. С помощью этих псевдоклассов можно стилизировать поля по валидности введённых данных, обязательности заполнения поля и другим состояниям.
+</p>
+
+<h3>:enabled и :disableb</h3>
+<p>
+    По названию понятно, что эти псевдоклассы выбирают элементы по атрибуту disabled. Данные псевдоклассы можно использовать на элементах input, select и button. Элементы формы активны по умолчанию. Они отключаются только, если установлен атрибут disabled.
+    <br> Селектор button:enabled найдет все кнопки без атрибута disabled. И наоборот, селектор button:disabled найдет все кнопки с атрибутом disabled.
+</p>
+<button class="btn">Активная кнопка</button>
+<button class="btn" disabled>Неактивная кнопка</button>
+
+<h3>:checked</h3>
+<p>
+    Применяется только к радиокнопкам и чекбоксам. По имени понятно, что данный псевдокласс позволяет стилизовать выбранные (отмеченные) поля.
+    <br>
+    Сделаем так, чтобы при выборе чекбокса, текст связанной метки становился зелёным и жирным. Для этого необходимо чтобы тег <label> шёл в разметке после чекбокса. Тогда испоьзуя селектор + можно его выбрать когда чекбокс отмечен.
+    </p>
+    <div>
+        <form class="form">
+            <div role="group">
+              <b class="form-caption">Чем вы увлекаетесь?</b>
+          
+              <div class="form-field">
+                <input type="checkbox" class="form-input" name="hobby" value="sports" id="sports">
+                <label class="form-label" for="sports">Спорт</label>
+              </div>
+          
+              <div class="form-field">
+                <input type="checkbox" class="form-input" name="hobby" value="music" id="music">
+                <label class="form-label" for="music">Музыка</label>
+              </div>
+          
+              <div class="form-field">
+                <input type="checkbox" class="form-input" name="hobby" value="books" id="books">
+                <label class="form-label" for="books">Книги</label>
+              </div>
+            </div>
+          
+            <button type="submit">Отправить</button>
+          </form>
+    </div>
+    <h3>:in-range и :out-of-range</h3>
+    <p>
+        Эти псевдоклассы можно использовать на элементах range, number и date. Для того чтобы они работали, на элементах должны быть использованы атрибуты min и max.
+        <br>
+        Создадим форму заказа с полем для ввода количества товаров. Если ввести число меньше 1 или больше 100, цвет рамки инпута поменяется на красный. Если значение остается в рамках диапазона, цвет будет зелёным.
+    </p>
+    <div>
+        <form class="form">
+
+            <div class="form-field12.1">
+              <label for="quantity" class="form-label12.1">Количество заказываемых футболок от 1 до 100:</label>
+              <input type="number" min="1" max="100" step="1" name="quantity" id="quantity" class="form-input12.1">
+            </div>
+          
+            <button type="submit">Отправить</button>
+          </form>
+    </div>
+    <p>
+        У этой группы селекторов есть ограничения. Цвет рамки инпута в примере сразу зелёный, то есть значения из селектора :in-range применяются еще до ввода какого-либо значения в инпут. Как решить эту проблему разберёмся дальше.
+    </p>
+    <h3>:required и :optional</h3>
+    <p>
+        Эти псевдоклассы выбирают элемент по наличию или отсутствию атрибута required у элемента. Браузеры показывают, что поле обязательно только после отправки формы. Псевдокласс :required позволяет стилизировать поле и показать пользователю, что поле обязательно еще до отправки данных.
+    </p>
+    <div>
+        <form class="form">
+
+            <label class="form-field12.2">
+              <span class="form-label12.2">Имя(не обязательное)</span>
+              <input type="text" class="form-input" name="name" placeholder="Иван Иванович">
+          
+            </label>
+          
+            <label class="form-field12.2">
+              <span class="form-label">Почта (обязательное)</span>
+              <input type="email" class="form-input" name="mail" placeholder="ivan@mail.com" required>
+            </label>
+          
+            <button type="submit">Отправить</button>
+          </form>
+    </div>
+    <p>
+        Проблемы такие же как и у предыдущей группы псевдоклассов - стили применяются еще до ввода какого-либо значения.
+    </p>
+
+    
+</body>

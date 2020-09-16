@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .body-container {
+    display: block;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+  
+  .btn {
+    display: inline-flex;
+    margin: 0 4px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 3px;
+  
+    font-family: sans-serif;
+    font-size: 16px;
+    color: black;
+  
+    background-color: orange;
+    cursor: pointer;
+  }
+  
+  .btn:disabled {
+    background-color: lightgray;
+  }
+  
+  
+  
+  
+  .form-caption {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  
+  .form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-label {
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  /* Оформляем .form-label когда чекбокс, идущий перед ним в разметке, отмечен */
+  .form-input:checked + .form-label {
+    font-weight: 700;
+    color: green;
+  }
+

@@ -438,13 +438,6 @@
         Существует атрибут autocomplete. Он нужен для того, чтобы форма предлагала варианты для заполнения полей. <br>
         Например если автозаполнение не нужно, то в тег form надо указать autocomplete="off". 
         После чего его можно отдельно включить на каком-либо из input с помощью autocomplete="on". <br>
-
-        <br> 
-        <b>Атрибут placeholder</b> нужен для того, чтобы вставлять в поле полупрозрачную подсказку у том, как его заполнять. 
-            Например в поле с именем сделать подсказку "Иван Иваныч". 
-        <br> Лучше не вкладывать значение label в placeholder. Лучше label оставлять отдельно, чтобы его было видно всегда. 
-        <br> В placeholder вписывается именно формат ввода, а не значение. 
-
     </p>
     <p>
         Пример формы регистрации спискера.
@@ -496,7 +489,34 @@
         Для оформления формы каждая пара label и input оборачивается например тегом p. 
         <br> Также для этого можно использовать ul списки. <br>
         Но мы будем использовать div. 
-
+        <br> Для того чтобы название поля стояло над полем, а не слева, можно:
+        <br> 1. сделать label и input блочными элементами <br>
+        2. Их родителя сделать flexbox и расположить их. Мы сделаем через flex. Потому что это позволяет проще оформлять все элементы. 
+        <br> Сами input по умолчанию имеют много стилей от браузера. Но почти все они скидываются. <br>
+        <b>Атрибут placeholder</b> нужен для того, чтобы вставлять в поле полупрозрачную подсказку у том, как его заполнять. 
+            Например в поле с именем сделать подсказку "Иван Иваныч". 
+        <br> Лучше не вкладывать значение label в placeholder. Лучше label оставлять отдельно, чтобы его было видно всегда. 
+        <br> В placeholder вписывается именно формат ввода, а не значение.
+        <br> Псевдоэлемент для CSS свойств ::placeholder используется для стилизации шрифта подсказок. Например .form-field input::placeholder{color: #000}
+        
+        <br> Далее чекбоксы и радио-кнопки. Когда есть группа таких элементов, то лучше всего обернуть их в список. 
+        <br> Сами чекбоксы можно стилизировать по атрибуту type="checkbox". Для этого надо выбрать селектор по атрибуту: .form-field input[type="checkbox"] {  }. 
+        <br> Но опять же, так мы сделаем сейчас. Но после будем скрывать эти чекбоксы и поверх них рисовать ручками кастомные чекбоксы для более удобонй стилизации.
+    </p>
+    <p>
+        Для оформления даты и времени нужно сначала заглянуть в те свойства, которые даются самим браузером, и тогда можно менять значения уже имеющихся свойств. Добавление других свойств бодет проблематично. 
+        <br> Иконки и надписи внутри поля input с помощью верстки двигать нельзя. 
+        Можно разве что изменить размер или цвет текста. 
+    </p>
+    <div class="attention">
+        <b>ВНИМАНИЕ</b>
+        <p>
+            ::before и ::after не могут применяться к элементам input, потому что эти элементы не имеют контента. 
+        </p>
+    </div>
+    <p>
+        Поэтому например для того, чтобы закрыть другой иконкой например иконку календаря с datetime, то надо его ставить в span и абсолютно позиционировать. 
+        <br> 
     </p>
 
 
@@ -516,34 +536,54 @@
         <input type="email" name="mail" id="mail" placeholder="my@mail.com">
         </div>
         
-         <div role="group">  
-            <input type="checkbox" name="topic" value="html" id="html" checked>
-            <label for="html">HTML</label>
-            <input type="checkbox" name="topic" value="js" id="js">
-            <label for="js">JavaScript</label>
-            <input type="checkbox" name="topic" value="css" id="css">
-            <label for="css">CSS</label>
+         <div role="group" class="group"> 
+            <h3 class="group-title">Тема доклада</h3> 
+
+            <ul class="topic-options">
+                <li><input type="checkbox" name="topic" value="html" id="html" checked>
+                    <label for="html">HTML</label>
+                </li>
+                <li><input type="checkbox" name="topic" value="js" id="js">
+                    <label for="js">JavaScript</label>
+                </li>
+                <li><input type="checkbox" name="topic" value="css" id="css">
+                    <label for="css">CSS</label>
+                </li>
+            </ul>
         </div>
-        <div role="group">
-            <input type="radio" name="experience" value="junior" id="junior" checked>
-            <label for="junior">Junior</label>
-            <input type="radio" name="experience" value="middle" id="middle">
-            <label for="middle">Middle</label>
-            <input type="radio" name="experience" value="senior" id="senior">
-            <label for="senior">Senior</label>
+        <div role="group" class="group">
+            <h3 class="group-title">Уровень вашей экспертизы</h3>
+            <ul class="topic-options">
+                <li><input type="radio" name="experience" value="junior" id="junior" checked>
+                    <label for="junior">Junior</label>
+                </li>
+                <li><input type="radio" name="experience" value="middle" id="middle">
+                    <label for="middle">Middle</label>
+                </li>
+                <li><input type="radio" name="experience" value="senior" id="senior">
+                    <label for="senior">Senior</label>
+                </li>
+            </ul>         
         </div>
-        <label for="date">Дата и время</label>
-        <input type="datetime-local" name="date" id="date">
-        <br>
-        <label for="pdf">Загрузите доклад в PDF</label>
-        <input type="file" name="" id="pdf">
-        <br>
-        <label for="comment">Оставьте комментарий</label>
-        <textarea name="comment" id="comment" rows="7" placeholder="Мой комментарий..."></textarea>
-        <br>
-        <input type="checkbox" name="" id="policy">
-        <label for="policy">Согласен на всё</label>
-        <br>
+        <div class="form-field">
+            <label for="date">Дата и время</label>
+            <input type="datetime-local" name="date" id="date" class="date">
+        </div>
+        
+        <div class="form-field">
+            <label for="pdf">Загрузите доклад в PDF</label>
+            <input type="file" name="" id="pdf">
+        </div>
+        
+        <div class="form-field">
+            <label for="comment">Оставьте комментарий</label>
+            <textarea class="comment" name="comment" id="comment" rows="7" placeholder="Мой комментарий..."></textarea>
+        </div>
+        <div class="form-field">
+            <input type="checkbox" name="" id="policy">
+            <label for="policy">Согласен на всё</label>
+        </div>
+
         <button type="submit">Оставить заявку</button>
     </form>
     <!-- <form>
