@@ -37,9 +37,20 @@
             <button type="submit">Отправить</button>
         </form>
     <ul>
-        <li>action- определяет URL, который обрабатывает форму. Именно туда будут отправлены данные, собранные формой, когда пользователь нажимает кнопку «Отправить». Обычно это специальный URL, определенный веб-сервером (бэкендом), который знает, как обрабатывать данные.</li>
-        <li>method - определяет как даннные формы будут отправлены на сервер, и может иметь значение post или get.</li>
+        <li>action- определяет URL, который обрабатывает форму. Именно туда будут отправлены данные, собранные формой, когда пользователь нажимает кнопку «Отправить». Обычно это специальный URL, определенный веб-сервером (бэкендом), который знает, как обрабатывать данные.
+            В атрибуте action указывается путь к РНР обработчику, если мы хотим обправлять данные напрямую. Но в современном мире так сейчас делается очень редко. Потому что при отправке данных напрямую страница перезагружается.
+
+        </li>
+        <li>method - определяет как даннные формы будут отправлены на сервер, и может иметь значение post или get.
+            Мы будем использовать post, потому что в таком случае данные будут зашифрованы. 
+
+        </li>
     </ul>
+    <p>
+        Тажке в форме обязательно должна быть кнопка для отправки формы в виде тега button. 
+        Type="submit" прописывать необязательно, т.к. любая button в формах будет по умолчанию type="submit". 
+
+    </p>
     <img src="./images/form-action-attribute.png" alt="" class="body-container form-elements">
     <div class="note">
         <b>NOTE</b>
@@ -93,6 +104,17 @@
             <p>
                 <a href="https://www.youtube.com/watch?v=jrigp2L-P-0&feature=youtu.be">Placeholders in Form Fields Are Harmful</a> - видео о том, как правильно проектировать доступные и лёгкие в использовании элементы форм с метками и подсказками.
             </p>
+            <p><a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input">Спецификация</a> на тег input
+            </p>
+            <p>
+                Чтобы вставить иконку svg в поле input, надо вставить её после input в разметке, спозиционировать абсолютно. Поставить по месту. <br>
+                А чтобы она не перекрывала вводимые данные, для input надо задать padding-left, тогда данные будут отображаться с учетом padding. <br>
+                На примере для простоты используется span, но вместо него также может быть тег svg и use. 
+            </p>
+            <div class="field-wrap">
+                <input type="text" name="user-name" pattern="[A-Za-zА-Яа-яЁё]" id="name" placeholder="Семён Семёныч" autocomplete="off" required>
+                <span></span>
+            </div>
         </div>
 
         <h2>Почта и пароль</h2>
@@ -439,6 +461,13 @@
         Например если автозаполнение не нужно, то в тег form надо указать autocomplete="off". 
         После чего его можно отдельно включить на каком-либо из input с помощью autocomplete="on". <br>
     </p>
+    <div class="note">
+        <b>ПОЛЕЗНО</b>
+        <p>
+            Для более точного ограничени вводимых данных для тега input есть атрибут pattern. В его значении можно указать границы вводимых данных, например от 0 до 9.     
+            <a href="http://htmlbook.ru/html/input/pattern">Как прописывать значения атрибута pattern</a>
+        </p>
+    </div>
     <p>
         Пример формы регистрации спискера.
     </p>
@@ -498,6 +527,8 @@
         <br> Лучше не вкладывать значение label в placeholder. Лучше label оставлять отдельно, чтобы его было видно всегда. 
         <br> В placeholder вписывается именно формат ввода, а не значение.
         <br> Псевдоэлемент для CSS свойств ::placeholder используется для стилизации шрифта подсказок. Например .form-field input::placeholder{color: #000}
+        <br> Также есть <b>атрибут value,</b> который позволяет частично заполнить данные за пользователя. Он фактически вводит данные в нужном формате, но их можно удалить перед вводом своих данных. 
+        <br>
         
         <br> Далее чекбоксы и радио-кнопки. Когда есть группа таких элементов, то лучше всего обернуть их в список. 
         <br> Сами чекбоксы можно стилизировать по атрибуту type="checkbox". Для этого надо выбрать селектор по атрибуту: .form-field input[type="checkbox"] {  }. 
@@ -520,20 +551,21 @@
     </p>
 
 
+    
     <form class="form js-speaker-form">
         <div class="form-field">
             <label for="name" class="form-label">Имя</label>
-            <input class="form-input" type="text" name="user-name" id="name" placeholder="Семён Семёныч">
+            <input class="form-input" type="text" name="user-name" pattern="[A-Za-zА-Яа-яЁё]" id="name" placeholder="Семён Семёныч" required>
         </div>
         
         <div class="form-field">
             <label for="tel" class="form-label">№ телефона</label>
-        <input class="form-input" type="tel" name="tel" id="tel" placeholder="+7-000-000-00-00">
+        <input class="form-input" type="tel" name="tel" id="tel" pattern="[0-9]{11}" placeholder="+7-000-000-00-00" required>
         </div>
         
         <div class="form-field">
             <label for="mail">Электронная почта</label>
-        <input type="email" name="mail" id="mail" placeholder="my@mail.com">
+        <input type="email" name="mail" id="mail" placeholder="my@mail.com" autocomplete="off" required>
         </div>
         
          <div role="group" class="group"> 

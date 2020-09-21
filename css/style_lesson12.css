@@ -9,6 +9,11 @@
     margin-right: auto;
 
 }
+
+
+.attention {
+  background-color: darkorange;
+}
   
   .btn {
     display: inline-flex;
@@ -55,3 +60,299 @@
     color: green;
   }
 
+
+
+  .form-field1 {
+    margin-bottom: 20px;
+  }
+  
+  .form-label1 {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .form-input1 {
+    width: 200px;
+    padding: 5px;
+    border-width: 3px;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .form-input1:in-range {
+    border-color: green;
+  }
+  
+  .form-input1:out-of-range {
+    border-color: red;
+  }
+
+
+  .form-field {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .form-input2 {
+    width: 300px;
+    border-color: black;
+    padding: 8px;
+    border-radius: 3px;
+    border-width: 3px;
+    font-family: sans-serif;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form-input2:optional {
+    border-color: blue;
+  }
+  
+  .form-input2:required {
+    border-color: red;
+  }
+
+
+
+  .form-field3 {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-label3 {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .form-input3 {
+    width: 300px;
+    border-color: black;
+    padding: 8px;
+    border-radius: 3px;
+    border-width: 3px;
+    font-family: sans-serif;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form-input3:valid {
+    border-color: green;
+  }
+  
+  .form-input3:invalid {
+    border-color: red;
+  }
+
+
+
+  .form-field4 {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-label4 {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .form-input4 {
+    width: 300px;
+    border-color: black;
+    padding: 8px;
+    border-radius: 3px;
+    border-width: 3px;
+    font-family: sans-serif;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .form-input4::placeholder {
+    font-size: 18px;
+    color: palevioletred;
+  }
+  
+  .form-input4:placeholder-shown {
+    border-color: green;
+  }
+  
+  .form-input4:not(:placeholder-shown) {
+    border-color: blue;
+  }
+
+
+
+  .form-field5 {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-label5 {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .form-input5 {
+    width: 300px;
+    border-color: black;
+    padding: 8px;
+    border-radius: 3px;
+    border-width: 3px;
+    font-family: sans-serif;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form-input5:not(:placeholder-shown):valid {
+    border-color: green;
+  }
+  
+  .form-input5:not(:placeholder-shown):invalid {
+    border-color: red;
+  }
+
+
+
+
+  .form {
+    width: 300px;
+    padding: 20px;
+    transition: box-shadow 250ms linear;
+  }
+  
+  .form:focus-within {
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .form-field6 {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-label6 {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .form-field6:focus-within {
+    color: blue;
+  }
+  
+  .form-input6 {
+    width: 100%;
+    border-color: black;
+    padding: 8px;
+    border-radius: 3px;
+    border-width: 3px;
+    font-family: sans-serif;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form-input6:not(:placeholder-shown):valid {
+    border-color: green;
+  }
+  
+  .form-input6:not(:placeholder-shown):invalid {
+    border-color: red;
+  }
+
+
+
+
+
+  /* .body {
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: #2a2a2a
+} */
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+.form {
+    width: 600px;
+    outline: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    margin-bottom: 5px;
+}
+
+.form-field input {
+    width: 100%;
+    margin: 0;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+.form-field input::placeholder {
+    color: pink
+}
+
+.form-field .comment {
+    padding: 10px;
+}
+
+.form .date {
+    border-color: tomato;
+    border-width: 4px;
+    border-radius: 6px;
+    padding: 20px 30px;
+}
+
+/* .form-field input[type="checkbox"] {
+    align-items: center;
+} */
+
+.group-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.group {
+    margin-bottom: 15px;
+}
+
+.topic-options {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.topic-options input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+.topic-options label {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.topic-options li {
+    display: flex;
+    align-items: center;
+}
+  

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Формы</title>
+    <title>Стилизация форм</title>
     <link rel="stylesheet" href="./css/style_lesson12.css">
 </head>
 <body class="body-container">
@@ -15,7 +15,7 @@
     Существует набор псевдоклассов, созданных специально для элементов форм, и не оказывающих никакого эффекта на другие типы элементов. С помощью этих псевдоклассов можно стилизировать поля по валидности введённых данных, обязательности заполнения поля и другим состояниям.
 </p>
 
-<h3>:enabled и :disableb</h3>
+<h3>:enabled и :disabled</h3>
 <p>
     По названию понятно, что эти псевдоклассы выбирают элементы по атрибуту disabled. Данные псевдоклассы можно использовать на элементах input, select и button. Элементы формы активны по умолчанию. Они отключаются только, если установлен атрибут disabled.
     <br> Селектор button:enabled найдет все кнопки без атрибута disabled. И наоборот, селектор button:disabled найдет все кнопки с атрибутом disabled.
@@ -62,9 +62,9 @@
     <div>
         <form class="form">
 
-            <div class="form-field12.1">
-              <label for="quantity" class="form-label12.1">Количество заказываемых футболок от 1 до 100:</label>
-              <input type="number" min="1" max="100" step="1" name="quantity" id="quantity" class="form-input12.1">
+            <div class="form-field1">
+              <label for="quantity" class="form-label1">Количество заказываемых футболок от 1 до 100:</label>
+              <input type="number" min="1" max="100" step="1" name="quantity" id="quantity" class="form-input1">
             </div>
           
             <button type="submit">Отправить</button>
@@ -80,15 +80,15 @@
     <div>
         <form class="form">
 
-            <label class="form-field12.2">
-              <span class="form-label12.2">Имя(не обязательное)</span>
-              <input type="text" class="form-input" name="name" placeholder="Иван Иванович">
+            <label class="form-field2">
+              <span class="form-label2">Имя(не обязательное)</span>
+              <input type="text" class="form-input2" name="name" placeholder="Иван Иванович">
           
             </label>
           
-            <label class="form-field12.2">
-              <span class="form-label">Почта (обязательное)</span>
-              <input type="email" class="form-input" name="mail" placeholder="ivan@mail.com" required>
+            <label class="form-field2">
+              <span class="form-label2">Почта (обязательное)</span>
+              <input type="email" class="form-input2" name="mail" placeholder="ivan@mail.com" required>
             </label>
           
             <button type="submit">Отправить</button>
@@ -98,5 +98,256 @@
         Проблемы такие же как и у предыдущей группы псевдоклассов - стили применяются еще до ввода какого-либо значения.
     </p>
 
+    <h3>:valid и :invalid</h3>
+    <p>
+      С помощью этих псевдоклассов можно стилизовать поля формы по определенным условиям валидности введённых значений. Проверочные ограничения накладываются с помощью атрибутов type и pattern. Например, поле с type="email" не пройдет валидацию, если пользователь введет строку mangomail.
+    </p>
+    <div>
+      <form class="form">
+
+        <label class="form-field3">
+          <span class="form-label3">Имя (не обязательное, c валидацией)</span>
+          <input type="text" class="form-input3" name="name" placeholder="Иван Иванович">
+      
+        </label>
+      
+        <label class="form-field3">
+          <span class="form-label3">Почта (обязательное, с валидацией)</span>
+          <input type="email" class="form-input3" name="mail" placeholder="ivan@mail.com" required>
+      
+        </label>
+      
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+    <p>
+      Опять же, проблемы со стилизацией - стили применяются еще до ввода значения.
+    </p>
+
+    <h3>:placeholder-shown</h3>
+    <p>
+      Селектор для стилизации инпута в зависимости от видимости его плейсхолдера - значения указанного в атрибуте placeholder. Начните вводить текст в поля формы и цвет рамки поля изменится на синий как только введённый текст заменит плейсхолдер.
+    </p>
+    <div>
+      <form class="form">
+
+        <label class="form-field4">
+          <span class="form-label4">Имя</span>
+          <input type="text" class="form-input4" name="name" placeholder="Иван Иванович">
+      
+        </label>
+      
+        <label class="form-field4">
+          <span class="form-label4">Почта</span>
+          <input type="email" class="form-input4" name="mail" placeholder="ivan@mail.com">
+      
+        </label>
+      
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+    <p>
+      Обратите внимание на то, что текст плейсхолдера необычно большой и розовый. Эти стили были добавлены в селекторе .form-input::placeholder - это псевдоэлемент для стилизации плейсхолдера. Не путайте его с псевдоклассом :placeholder-shown.
+    </p>
+    <img src="./images/placeholder-shown.png" alt="">
+
+    <h2>Комбинирование псевдоклассов</h2>
+    <p>
+      Для того чтобы частично решить проблему применения стилей до ввода значений в поле, можно использовать комбинацию селекторов :required и :valid. При помощи CSS можно показывать лишь положительный результат, когда валидно обязательное к заполнению поле.
+    </p>
+    <img src="./images/combine.JPG" alt="">
+    <p>
+      Изначально рамка будет чёрной, а при вводе валидного значения станет зелёной. Этот подход не решает проблему стилизации невалидного поля, так как пустое и обязательное (required) поле не валидно по умолчанию, стили из селектора input:required:invalid применятся сразу.
+    </p>
+    <p>
+      Можно попробовать применить комбинации :focus и :valid, но тогда поле будет получать стили только при фокусе, что тоже не совсем то, что нужно.
+    </p>
+    <img src="./images/focus-valid-invalid.JPG" alt="">
+    <p>
+      А вот если добавить плейсхолдер, и скомбинировать :placeholder-shown, :valid и :invalid, получим именно то, что нужно. Пока поле пустое, есть плейсхолдер и селектор не применяется. Как только что-то ввели и плейсхолдер пропал - происходит валидация и применяется селектор.
+    </p>
+    <div>
+      <form class="form">
+
+        <label class="form-field5">
+          <span class="form-labe5l">Имя (не обязательное, c валидацией)</span>
+          <input type="text" class="form-input5" name="name" placeholder="Иван Иванович">
+      
+        </label>
+      
+        <label class="form-field5">
+          <span class="form-label5">Почта (обязательное, с валидацией)</span>
+          <input type="email" class="form-input5" name="mail" placeholder="ivan@mail.com" required>
+      
+        </label>
+      
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+    <div class="attention">
+      <b>ВНИМАНИЕ</b>
+      <p>
+      Для более сложной валидации и оформления результатов нужна дополнительная разметка, язык программирования JavaScript и хорошее понимание Constraint validation API. Настраивать валидацию в HTML нет смысла, такое решение не масштабируется и плохо поддерживается.
+      </p>
+    </div>
+
+    <h3>:focus-within</h3>
+    <p>
+      Применяется к элементу, когда он сам или элементы внутри него получают фокус. В отличие от :focus, который применяется непосредственно к самому элементу, :focus-within работает для предков. Это позволяет применить стили на метку, форму или отдельные её части, когда пользователь взаимодействует с полями.
+    </p>
+    <p>
+      Добавим эффект появления тени на всей форме и изменим цвет текста метки на синий при получении фокуса полем.
+    </p>
     
-</body>
+    <form class="form">
+
+      <label class="form-field6">
+        <span class="form-label6">Имя (не обязательное, c валидацией)</span>
+        <input type="text" class="form-input6" name="name" placeholder="Иван Иванович">
+    
+      </label>
+    
+      <label class="form-field6">
+        <span class="form-label6">Почта (обязательное, с валидацией)</span>
+        <input type="email" class="form-input6" name="mail" placeholder="ivan@mail.com" required>
+    
+      </label>
+    
+      <button type="submit">Отправить</button>
+    </form>
+    <div class="attention">
+      <b>ВНИМАНИЕ</b>
+      <p>
+        Это новый селектор из спецификации CSS 4-й версии, которая в данный момент находится в стадии разработки.
+      </p>
+    </div>
+
+    <h2>Дополнительные материалы</h2>
+    <a href="https://www.youtube.com/watch?v=E6kLaaQFctU&feature=youtu.be">Кастомные чекбоксы правильно (Вадим Макеев)</a>
+
+
+    
+
+    <h2>Вебинар с Репетой</h2>
+
+    <p>
+      Для того чтобы выбрать label для оформления, нужно поставить его после тега input. 
+      <br> С помощью такого селектора .form-input:focus + .form-label { }. 
+      <br>Он выберет эоемент с классом form-label, который идёт после элемента с классом form-input при :focus. 
+      <br> В домашке это пригодится для того чтобы при фокусе изменить цвет иконки, и возможно сдвинуть label. 
+      <br>
+      <div class="note">
+        <b>На заметку</b>
+        <p>
+          Если label стоит визуально внутри инпута, и при фокусе уезжает наверх, с помощью transformY при фокусе. То как только фокус снимется, label приедет обратно поверх введенных данных. <br>
+          Чтобы это вылечить нужно для input задать placeholder (просто с пробелом, если не нужен, такой вот хак) и применить сложный селектор 
+          form-input:focus + form.label,<br>
+          .form-input:not(:placeholder-shown) + .form-label { transformY(-...px) }. <br>
+          Который буквально означает, что сделай transformY для form-label идущего после form-input при фокусе на form-input или когда у form-input не видно placeholder. 
+          <br>
+
+        </p>
+      </div>
+      <div class="attention">
+        <b>ВНИМАНИЕ</b>
+        <p>
+         Есть ещё один селектор типа "+", это Тильда "~". + выбирает следующего соседа, а тильда выбирает всех под  
+        </p>следющих соседей. <br>
+        Т.е. селектор .form-input ~ .icon выберет все icon, которые идут под .form-input. 
+
+      </div>
+      <p>
+        В совсременном CSS4 что за чем стоит в разметке абсолютно не важно. Но она пока ещё на стандартизирована между браузерами. <br>
+
+      </p>
+
+      <h2>Кастомные чекбоксы</h2>
+      Для CSS существет селектор .checkbox:checked { ... } внутри которого можно указывать свойтва чекбокса в состоянии checked. 
+      <br> Для того чтобы спрятать чекбокс есть такой атрибут appearance: none; он позволяет сбросить все заложенные браузером настройки элемента. 
+      Но этот атрибут пока неполноценно поддерживается браузерами, поэтому ему необходимо добавлять авто-префиксеры. <br>
+      Их не нужно брать из головы, а нужно вот <a href="https://autoprefixer.github.io/ru/"> отсюда.</a>
+      <br> при таком подходе его увидят все читалки и т.п., но выизуально из потока он скрыт. Также можно еще добавить ему position: absolute, чтобы максимально вынуть его из потока. 
+      <br>
+      Вариант кастомизации чекбокса: делается span с классом icon, вместо пустого чекбокса для span задается border нужными параметрами. 
+      А потом добавляется селектор, указывающий, что при checkbox в состоянии checked, для следующего после него span измени background-color и вставь svg через background-image. <br>
+      <img src="./images/modal-checkbox.JPG" alt="">
+      <br> А чтобы отрегулировать параметры border применяется свойтво background-origin. Свойство background-origin определяет область позиционирования фонового рисунка.  
+      <ul>
+        <li>padding-box
+          Фон позиционируется относительно края элемента с учетом толщины границы.</li>
+        <li>border-box
+          Фон позиционируется относительно границы, при этом линия границы может перекрывать изображение.</li>
+        <li>content-box
+          Фон позиционируется относительно содержимого элемента.</li>
+      </ul>
+    </p>
+
+    <form class="form js-speaker-form">
+      <div class="form-field">
+          <label for="name" class="form-label">Имя</label>
+          <input class="form-input" type="text" name="user-name" pattern="[A-Za-zА-Яа-яЁё]" id="name" placeholder="Семён Семёныч" required>
+      </div>
+      
+      <div class="form-field">
+          <label for="tel" class="form-label">№ телефона</label>
+      <input class="form-input" type="tel" name="tel" id="tel" pattern="[0-9]{11}" placeholder="+7-000-000-00-00" required>
+      </div>
+      
+      <div class="form-field">
+          <label for="mail">Электронная почта</label>
+      <input type="email" name="mail" id="mail" placeholder="my@mail.com" autocomplete="off" required>
+      </div>
+      
+       <div role="group" class="group"> 
+          <h3 class="group-title">Тема доклада</h3> 
+
+          <ul class="topic-options">
+              <li><input type="checkbox" name="topic" value="html" id="html" checked>
+                  <label for="html">HTML</label>
+              </li>
+              <li><input type="checkbox" name="topic" value="js" id="js">
+                  <label for="js">JavaScript</label>
+              </li>
+              <li><input type="checkbox" name="topic" value="css" id="css">
+                  <label for="css">CSS</label>
+              </li>
+          </ul>
+      </div>
+      <div role="group" class="group">
+          <h3 class="group-title">Уровень вашей экспертизы</h3>
+          <ul class="topic-options">
+              <li><input type="radio" name="experience" value="junior" id="junior" checked>
+                  <label for="junior">Junior</label>
+              </li>
+              <li><input type="radio" name="experience" value="middle" id="middle">
+                  <label for="middle">Middle</label>
+              </li>
+              <li><input type="radio" name="experience" value="senior" id="senior">
+                  <label for="senior">Senior</label>
+              </li>
+          </ul>         
+      </div>
+      <div class="form-field">
+          <label for="date">Дата и время</label>
+          <input type="datetime-local" name="date" id="date" class="date">
+      </div>
+      
+      <div class="form-field">
+          <label for="pdf">Загрузите доклад в PDF</label>
+          <input type="file" name="" id="pdf">
+      </div>
+      
+      <div class="form-field">
+          <label for="comment">Оставьте комментарий</label>
+          <textarea class="comment" name="comment" id="comment" rows="7" placeholder="Мой комментарий..."></textarea>
+      </div>
+      <div class="form-field">
+          <input type="checkbox" name="" id="policy">
+          <label for="policy">Согласен на всё</label>
+      </div>
+
+      <button type="submit">Оставить заявку</button>
+  </form>
+
+
+  </body>
