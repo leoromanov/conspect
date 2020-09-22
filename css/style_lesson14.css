@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #2a2a2a;
+    background-color: #fff;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .container {
+    max-width: 1140px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .advice {
+    background-color: rgb(3, 209, 3);
+}
+
+.webinar {
+    background-color: rgb(192, 192, 192);
+}
+
