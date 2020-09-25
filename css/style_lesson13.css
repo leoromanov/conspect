@@ -18,6 +18,9 @@
 .advice {
     background-color: rgb(3, 209, 3);
 }
+.webinar {
+    background-color: rgb(192, 192, 192);
+}
 
 /* Стили для примера модификатора состояния */
 .alert {
